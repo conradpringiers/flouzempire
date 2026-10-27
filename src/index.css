@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 15% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 10%;
+    --primary: 145 63% 42%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 15% 93%;
+    --secondary-foreground: 220 15% 25%;
+    --muted: 220 12% 91%;
+    --muted-foreground: 220 10% 45%;
+    --accent: 145 63% 42%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 2 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 145 63% 42%;
+    --radius: 0.75rem;
+
+    --gain: 145 63% 35%;
+    --loss: 2 72% 50%;
+    --warning: 40 96% 45%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body, #root {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+    overscroll-behavior: none;
+    overflow: hidden;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+  }
+}
+
+@layer utilities {
+  .text-gain { color: hsl(var(--gain)); }
+  .text-loss { color: hsl(var(--loss)); }
+  .text-warn { color: hsl(var(--warning)); }
+  .bg-gain { background-color: hsl(var(--gain)); }
+  .bg-loss { background-color: hsl(var(--loss)); }
+
+  .game-card {
+    @apply bg-card rounded-xl border border-border p-4 shadow-sm;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground rounded-full px-5 py-2.5 font-semibold text-sm
+           active:scale-95 transition-transform duration-100;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground rounded-full px-5 py-2.5 font-semibold text-sm
+           border border-border active:scale-95 transition-transform duration-100;
+  }
+
+  .btn-danger {
+    @apply bg-destructive text-destructive-foreground rounded-full px-5 py-2.5 font-semibold text-sm
+           active:scale-95 transition-transform duration-100;
+  }
+
+  .counter-large {
+    @apply text-3xl font-bold tracking-tight tabular-nums;
+  }
+
+  .counter-medium {
+    @apply text-xl font-bold tracking-tight tabular-nums;
+  }
+
+  .floating-text {
+    animation: floatUp 0.8s ease-out forwards;
+    @apply text-gain font-bold text-lg pointer-events-none absolute;
+  }
+
+  @keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-60px) scale(1.2); }
+  }
+
+  @keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 0 hsla(var(--primary), 0.4); }
+    50% { box-shadow: 0 0 0 12px hsla(var(--primary), 0); }
+  }
+
+  .tap-button {
+    animation: pulse-green 2s infinite;
+  }
+
+  @keyframes particle {
+    0% { opacity: 0.7; transform: translateY(0) translateX(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-100px) translateX(var(--dx)) scale(0.3); }
+  }
+
+  .cash-particle {
+    animation: particle 1.5s ease-out forwards;
+  }
+
+  @keyframes fadeSlideIn {
+    0% { opacity: 0; transform: translateY(6px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .tab-content-enter {
+    animation: fadeSlideIn 0.25s ease-out;
+  }
+
+  @keyframes slideUp {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes scaleIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.25s ease-out;
+  }
+}
