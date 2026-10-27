@@ -1,0 +1,12 @@
+{
+  "name": "Flouz Empire",
+  "short_name": "FlouzEmpire",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F1117",
+  "theme_color": "#0F1117",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
